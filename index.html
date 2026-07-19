@@ -1,281 +1,604 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aditya Kumar Maharana | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Kumar Maharana | Portfolio</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-font-family:Arial,Helvetica,sans-serif;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f;
+            color: #ccd6f6;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-body{
-background:#0f172a;
-color:white;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-header{
-position:fixed;
-width:100%;
-background:#111827;
-padding:20px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-}
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
 
-.logo{
-font-size:28px;
-font-weight:bold;
-color:#38bdf8;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #64ffda;
+        }
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-weight:bold;
-}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-nav a:hover{
-color:#38bdf8;
-}
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-section{
-padding:100px 8%;
-min-height:100vh;
-}
+        .nav-links a:hover {
+            color: #64ffda;
+        }
 
-.hero{
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-}
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
 
-.hero h1{
-font-size:55px;
-margin-bottom:15px;
-}
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #ccd6f6;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
 
-.hero span{
-color:#38bdf8;
-}
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 70px;
+        }
 
-.hero p{
-font-size:20px;
-margin-bottom:30px;
-color:#ddd;
-}
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #e6f1ff;
+            margin-bottom: 0.5rem;
+        }
 
-.btn{
-display:inline-block;
-padding:12px 28px;
-background:#38bdf8;
-color:#000;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-}
+        .hero .highlight {
+            color: #64ffda;
+        }
 
-h2{
-font-size:40px;
-margin-bottom:25px;
-color:#38bdf8;
-}
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 1rem auto 2rem;
+        }
 
-.card{
-background:#1e293b;
-padding:25px;
-margin-top:20px;
-border-radius:12px;
-}
+        .hero .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.skills{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
-}
+        .btn {
+            padding: 0.8rem 2rem;
+            border: 2px solid #64ffda;
+            color: #64ffda;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-.skill{
-background:#1e293b;
-padding:20px;
-text-align:center;
-border-radius:10px;
-}
+        .btn.primary {
+            background: #64ffda;
+            color: #0a192f;
+        }
 
-.project{
-background:#1e293b;
-padding:20px;
-margin-top:20px;
-border-radius:12px;
-}
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
 
-footer{
-background:#111827;
-padding:20px;
-text-align:center;
-}
+        .btn.primary:hover {
+            background: transparent;
+            color: #64ffda;
+        }
 
-a{
-color:#38bdf8;
-}
+        /* Section General */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
-@media(max-width:768px){
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #e6f1ff;
+        }
 
-.hero h1{
-font-size:38px;
-}
+        .section-title span {
+            color: #64ffda;
+            font-size: 1.5rem;
+        }
 
-nav{
-display:none;
-}
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #233554;
+        }
 
-}
-</style>
+        /* About / Education */
+        .about-text {
+            max-width: 800px;
+            font-size: 1.1rem;
+        }
+
+        .education-item {
+            background: #112240;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .education-item h3 {
+            color: #e6f1ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .date {
+            color: #64ffda;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: #112240;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .skill-category h3 {
+            color: #64ffda;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category li i {
+            color: #64ffda;
+            font-size: 0.8rem;
+        }
+
+        /* Experience & Projects */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #233554;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #64ffda;
+            border: 3px solid #0a192f;
+        }
+
+        .timeline-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-header h3 {
+            color: #e6f1ff;
+            font-size: 1.3rem;
+        }
+
+        .company {
+            color: #64ffda;
+            font-weight: 500;
+        }
+
+        .date {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+
+        .timeline-details {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+
+        .timeline-details li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-details li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #64ffda;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: #112240;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid #64ffda;
+        }
+
+        .cert-card h4 {
+            color: #e6f1ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card p {
+            font-size: 0.95rem;
+            color: #8892b0;
+        }
+
+        /* Contact */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-links a {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: #64ffda;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0a192f;
+            border-top: 1px solid #233554;
+            color: #8892b0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">AKM</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-<header>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Aditya Kumar <span class="highlight">Maharana</span></h1>
+        <p>AI & Data Engineering professional crafting intelligent systems. B.Tech CSE (AI & ML) student at GIET University, passionate about turning raw data into actionable insights.</p>
+        <div class="cta-buttons">
+            <a href="https://github.com/adityakumarmaharana" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/adityaku1818/" target="_blank" class="btn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="mailto:adityakumarmaharana@gmail.com" class="btn primary"><i class="far fa-envelope"></i> Email Me</a>
+        </div>
+    </section>
 
-<div class="logo">Aditya</div>
+    <!-- About / Education -->
+    <section id="about">
+        <h2 class="section-title"><span>01.</span> About & Education</h2>
+        <div class="about-text">
+            <p>I'm a final-year B.Tech Computer Science (AI & ML) student at Gandhi Institute of Engineering and Technology University, Gunupur, Odisha. My journey spans AI engineering, data analytics, and scalable backend systems. I thrive on solving real-world problems using Python, ML, cloud services, and automation.</p>
+        </div>
+        <div class="education-item">
+            <h3>Gandhi Institute of Engineering and Technology University</h3>
+            <p class="date">Aug 2023 – Jun 2027</p>
+            <p>Bachelor of Technology in Computer Science and Engineering (AI & Machine Learning) – Final Year Student</p>
+        </div>
+    </section>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</nav>
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="section-title"><span>02.</span> Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Tools & Technical</h3>
+                <ul>
+                    <li><i class="fas fa-caret-right"></i> Python (Pandas, NumPy, Automation)</li>
+                    <li><i class="fas fa-caret-right"></i> SQL (Joins, Subqueries, Window Functions)</li>
+                    <li><i class="fas fa-caret-right"></i> REST APIs</li>
+                    <li><i class="fas fa-caret-right"></i> Advanced Excel (PivotTables, Power Query)</li>
+                    <li><i class="fas fa-caret-right"></i> Power BI, Tableau, Plotly</li>
+                    <li><i class="fas fa-caret-right"></i> Power Automate (Automated Workflows)</li>
+                    <li><i class="fas fa-caret-right"></i> Jupyter Notebook</li>
+                    <li><i class="fas fa-caret-right"></i> Azure (Data Factory, Databricks, Blob Storage, SQL DW)</li>
+                    <li><i class="fas fa-caret-right"></i> PySpark, Scikit-learn, NLTK</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Analytics & Business</h3>
+                <ul>
+                    <li><i class="fas fa-caret-right"></i> Statistical Analysis</li>
+                    <li><i class="fas fa-caret-right"></i> Data Validation & Cleaning</li>
+                    <li><i class="fas fa-caret-right"></i> KPI Reporting</li>
+                    <li><i class="fas fa-caret-right"></i> ETL Pipelines</li>
+                    <li><i class="fas fa-caret-right"></i> Data Storytelling</li>
+                    <li><i class="fas fa-caret-right"></i> Cross-Functional Communication</li>
+                    <li><i class="fas fa-caret-right"></i> Agile/Scrum</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-</header>
+    <!-- Experience -->
+    <section id="experience">
+        <h2 class="section-title"><span>03.</span> Professional Experience</h2>
+        <div class="timeline">
+            <!-- Infinite -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3>AI Engineer Intern</h3>
+                        <p class="company">Infinite Computer Solutions</p>
+                    </div>
+                    <p class="date">Apr 2026 – Jun 2026</p>
+                </div>
+                <ul class="timeline-details">
+                    <li>Architected a Graph RAG system with Neo4j, Cypher, and vector embeddings for 50K+ telecom docs, boosting retrieval precision by 35%.</li>
+                    <li>Engineered LLM microservices on LangGraph & FastAPI, containerized with Docker, reducing network incident investigation time by 30%.</li>
+                    <li>Designed Python pipeline processing 5,000+ daily alarms, suppressing 20% false positives with predictive correlation.</li>
+                </ul>
+            </div>
+            <!-- inMorphis -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3>Software Engineer Intern</h3>
+                        <p class="company">inMorphis</p>
+                    </div>
+                    <p class="date">Jun 2025 – Jul 2025</p>
+                </div>
+                <ul class="timeline-details">
+                    <li>Reduced report generation time by 40% via Python analytics microservice with N1QL queries on Couchbase.</li>
+                    <li>Improved EmployWise 2.0 HCM scalability by 30% with event-driven microservices and async messaging.</li>
+                    <li>Engineered near real-time Pub/Sub pipeline from IBM DB2 to Couchbase, enabling zero-downtime NoSQL adoption.</li>
+                </ul>
+            </div>
+            <!-- Zoho -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <h3>Summer Intern</h3>
+                        <p class="company">Zoho</p>
+                    </div>
+                    <p class="date">Jun 2024 – Jul 2024</p>
+                </div>
+                <ul class="timeline-details">
+                    <li>Prototyped intelligent workflows with Zia Agents, mastering Generative AI, LLMs, and NLP within Zoho's ecosystem.</li>
+                    <li>Built AI agent prototypes using Zia Agent Studio, applying prompt engineering and workflow customization.</li>
+                    <li>Collaborated with senior engineers in Agile, contributing to AI design discussions for enterprise-grade solutions.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<section class="hero" id="home">
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="section-title"><span>04.</span> Projects</h2>
+        <div class="timeline">
+            <!-- WorkforceIQ -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>WorkforceIQ: Workforce Analytics Platform</h3>
+                    <p class="date">Jan 2026 – Jul 2026</p>
+                </div>
+                <p class="company">Python, Scikit-learn, NLTK, SQL, Tableau, Plotly, Power Automate</p>
+                <ul class="timeline-details">
+                    <li>Ingested and scored 50K+ employee records and 10K call transcripts, building a scalable analytics pipeline.</li>
+                    <li>Developed Random Forest (85%+ accuracy), K-Means clustering, and VADER sentiment (~92% agreement) models.</li>
+                    <li>Automated delivery of insights to Tableau, Plotly dashboards, and email, cutting HR reporting time by 60%.</li>
+                </ul>
+            </div>
+            <!-- Deepfake Project (from README) -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Deepfake Face-Swap Detection System</h3>
+                    <p class="date">Featured Project</p>
+                </div>
+                <p class="company">Deep Learning, PyTorch, OpenCV, Flask</p>
+                <ul class="timeline-details">
+                    <li>Developed an AI-powered web app that detects manipulated face-swapped videos with high accuracy.</li>
+                    <li>Implemented real-time inference using PyTorch and OpenCV, integrated with a Flask backend for easy deployment.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<div>
+    <!-- Certifications -->
+    <section id="certifications">
+        <h2 class="section-title"><span>05.</span> Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h4>Machine Learning Professional – Altair</h4>
+                <p>Validates applied ML skills in classification, regression, clustering, association rules, and model validation.</p>
+            </div>
+            <div class="cert-card">
+                <h4>Data Engineering Professional – Altair</h4>
+                <p>ETL pipeline development, data transformation, validation, and scalable data processing.</p>
+            </div>
+            <div class="cert-card">
+                <h4>Certified Associate Developer – Symphony</h4>
+                <p>Automated workflows and API integrations for enterprise communication platforms.</p>
+            </div>
+        </div>
+    </section>
 
-<h1>Hello, I'm <span>Aditya Kumar Maharana</span></h1>
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title"><span>06.</span> Contact</h2>
+        <p style="text-align:center; max-width:600px; margin:0 auto 2rem;">I'm always open to discussing new opportunities, collaborations, or just a friendly chat about AI and data. Let's connect!</p>
+        <div class="contact-links">
+            <a href="mailto:adityakumarmaharana@gmail.com"><i class="far fa-envelope"></i> adityakumarmaharana@gmail.com</a>
+            <a href="tel:+918456841232"><i class="fas fa-phone-alt"></i> +91 8456841232</a>
+            <a href="https://www.linkedin.com/in/adityaku1818/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://github.com/adityakumarmaharana" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+        <p style="text-align:center;"><i class="fas fa-map-marker-alt"></i> Gunupur, Odisha, India</p>
+    </section>
 
-<p>
-AI & Machine Learning Student | Python Developer | Data Science Enthusiast
-</p>
+    <footer>
+        <p>© 2026 Aditya Kumar Maharana. Built with <i class="fas fa-heart" style="color:#64ffda;"></i> and code.</p>
+    </footer>
 
-<a href="#contact" class="btn">Contact Me</a>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.right = '2rem';
+                navLinks.style.background = '#112240';
+                navLinks.style.padding = '1.5rem';
+                navLinks.style.borderRadius = '8px';
+                navLinks.style.gap = '1rem';
+            }
+        }
 
-</div>
-
-</section>
-
-<section id="about">
-
-<h2>About Me</h2>
-
-<div class="card">
-
-<p>
-
-I'm a B.Tech Computer Science (AI & Machine Learning) student at GIET University with a passion for Artificial Intelligence, Machine Learning, Web Development, and Data Science. I enjoy building intelligent applications that solve real-world problems.
-
-</p>
-
-</div>
-
-</section>
-
-<section id="skills">
-
-<h2>Skills</h2>
-
-<div class="skills">
-
-<div class="skill">Python</div>
-
-<div class="skill">Machine Learning</div>
-
-<div class="skill">Deep Learning</div>
-
-<div class="skill">HTML</div>
-
-<div class="skill">CSS</div>
-
-<div class="skill">JavaScript</div>
-
-<div class="skill">Flask</div>
-
-<div class="skill">SQL</div>
-
-<div class="skill">MySQL</div>
-
-<div class="skill">Git & GitHub</div>
-
-<div class="skill">Power BI</div>
-
-<div class="skill">AWS</div>
-
-</div>
-
-</section>
-
-<section id="projects">
-
-<h2>Projects</h2>
-
-<div class="project">
-
-<h3>Deepfake Face Swap Detection System</h3>
-
-<br>
-
-<p>
-
-Developed an AI-powered web application that detects manipulated videos using Deep Learning, OpenCV, PyTorch, and Flask. The system analyzes uploaded videos and predicts whether they are real or fake.
-
-</p>
-
-</div>
-
-</section>
-
-<section id="contact">
-
-<h2>Contact</h2>
-
-<div class="card">
-
-<p>Email: your-email@example.com</p>
-
-<br>
-
-<p>GitHub:
-<a href="https://github.com/adityakumarmaharana" target="_blank">
-github.com/adityakumarmaharana
-</a>
-</p>
-
-<br>
-
-<p>LinkedIn:
-<a href="#">
-Add Your LinkedIn URL
-</a>
-</p>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 Aditya Kumar Maharana. All Rights Reserved.
-
-</footer>
-
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                const nav = document.getElementById('navLinks');
+                if (nav.style.display === 'flex') nav.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
