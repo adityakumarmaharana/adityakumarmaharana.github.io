@@ -292,30 +292,60 @@
       color: var(--blue);
       letter-spacing: 0.05em;
     }
-    .skills {
+
+    /* ========== SKILLS (TOP-LEVEL REDESIGN) ========== */
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-left: 1px solid var(--line);
-      border-top: 1px solid var(--line);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
-    .skill {
-      min-height: 260px;
-      padding: 24px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .skill-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 32px 28px;
+      transition: border-color 0.25s, transform 0.25s;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
     }
-    .skill b {
+    .skill-card:hover {
+      border-color: var(--coral);
+      transform: translateY(-4px);
+    }
+    .skill-card .num {
+      font: 11px "IBM Plex Mono";
       color: var(--coral);
-      font: 10px "IBM Plex Mono";
+      letter-spacing: 0.12em;
+      margin-bottom: 18px;
     }
-    .skill h3 {
-      font: 500 21px "Bodoni Moda";
-      margin: 35px 0 13px;
+    .skill-card h3 {
+      font: 500 26px "Bodoni Moda";
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
     }
-    .skill p {
+    .skill-card .desc {
+      font-size: 14px;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: auto;
+    }
+    .skill-tags span {
+      font: 11px "IBM Plex Mono";
+      padding: 6px 11px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: var(--paper);
+      transition: all 0.2s;
+    }
+    .skill-card:hover .skill-tags span {
+      border-color: var(--coral);
+      color: var(--coral);
     }
 
     /* Projects */
@@ -541,6 +571,9 @@
       white-space: nowrap;
     }
 
+    @media (max-width: 1000px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 900px) {
       .role { grid-template-columns: 80px 1fr; gap: 20px; }
       .year { font-size: 42px; }
@@ -558,7 +591,6 @@
       .role { grid-template-columns: 1fr; gap: 14px; }
       .edu-role { grid-template-columns: 1fr; gap: 14px; }
       .role-logo { width: 70px; height: 70px; }
-      .skills { grid-template-columns: repeat(2, 1fr); }
       .footer-row { gap: 20px; flex-wrap: wrap; }
       .profile-pic { width: 120px; height: 120px; }
       .cert-card { grid-template-columns: 1fr !important; }
@@ -566,15 +598,18 @@
       .cert-card h3 { white-space: normal; }
       .project-body h3 { font-size: 32px; }
     }
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 480px) {
       section { padding: 90px 0; }
       .hero h1 { font-size: 47px; }
       .actions { align-items: flex-start; flex-direction: column; }
-      .skills { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .ticker span { animation: none; }
+      .skill-card { transition: none; }
     }
   </style>
 </head>
@@ -655,7 +690,7 @@
       </span>
     </div>
 
-    <!-- ========== PROJECTS (VERTICAL) ========== -->
+    <!-- Projects -->
     <section class="wrap" id="projects">
       <div class="heading">
         <p class="label">01 / Selected work</p>
@@ -665,21 +700,15 @@
 
       <div class="projects-vertical">
 
-        <!-- PROJECT 1: DEPLOYTUAL (with homepage screenshot) -->
+        <!-- Deploytual -->
         <article class="project-card">
           <div class="project-header">
             <div class="project-cat">01 / AI ANALYTICS PLATFORM</div>
             <div class="project-date">Jun 2026 – Present</div>
           </div>
-
-          <!-- Deploytual Homepage Screenshot -->
           <div class="project-image">
-            <img 
-              src="deploytual-homepage.png" 
-              alt="Deploytual — Query any dataset with AI. Instantly."
-            >
+            <img src="deploytual-homepage.png" alt="Deploytual — Query any dataset with AI. Instantly.">
           </div>
-
           <div class="project-body">
             <h3>Deploytual</h3>
             <p class="project-tagline">Deploy intelligence. Any data. Anywhere.</p>
@@ -687,26 +716,11 @@
               An AI-powered analytics platform that unifies data connectivity, natural language querying, and automated machine learning into a single, deployable engine — ready to be dropped into any environment.
             </p>
             <ul class="project-bullets">
-              <li>
-                <span>•</span>
-                <span><strong>End-to-End Pipeline Builder:</strong> Turn plain-English commands like “clean the data, detect anomalies, and generate a PDF report” into fully automated ETL + ML + reporting workflows. No manual scripting — just instant, client-ready results.</span>
-              </li>
-              <li>
-                <span>•</span>
-                <span><strong>Explainable AI & Storyteller:</strong> Every analysis reveals the exact Pandas code or SQL behind the answer, and a built-in text-to-speech engine reads the insights aloud. Transparent, accessible, and enterprise-grade.</span>
-              </li>
-              <li>
-                <span>•</span>
-                <span><strong>One-Click Executive Reports:</strong> Generate boardroom-ready PDFs containing AI-written executive summaries, anomaly highlights, forecast charts, and data quality scores — directly from any uploaded dataset.</span>
-              </li>
-              <li>
-                <span>•</span>
-                <span><strong>AutoML & AI Data Cleaning Studio:</strong> Anomaly detection (Isolation Forest), time-series forecasting (Prophet), automatic missing-value alerts, and one-click fixes — no machine-learning expertise required.</span>
-              </li>
-              <li>
-                <span>•</span>
-                <span><strong>Production-Ready & Multi-Source:</strong> Dockerized with CI/CD, live on Render & Netlify. Connects to CSV, Excel, PostgreSQL, MySQL, MongoDB, and more. Built from the ground up to be deployed anywhere, by anyone.</span>
-              </li>
+              <li><span>•</span><span><strong>End-to-End Pipeline Builder:</strong> Turn plain-English commands into fully automated ETL + ML + reporting workflows.</span></li>
+              <li><span>•</span><span><strong>Explainable AI & Storyteller:</strong> Every analysis reveals the exact Pandas/SQL code, with text-to-speech narration.</span></li>
+              <li><span>•</span><span><strong>One-Click Executive Reports:</strong> Boardroom-ready PDFs with AI summaries, anomaly highlights, and forecasts.</span></li>
+              <li><span>•</span><span><strong>AutoML & Data Cleaning Studio:</strong> Isolation Forest, Prophet forecasting, missing-value detection and one-click fixes.</span></li>
+              <li><span>•</span><span><strong>Production-Ready:</strong> Dockerized, Kubernetes + Helm, live on Render & Netlify. Connects to CSV, Excel, PostgreSQL, MySQL, MongoDB.</span></li>
             </ul>
             <div class="project-footer">
               <div class="project-links">
@@ -715,18 +729,13 @@
                 <a href="https://github.com/sangramghose/Deploytual" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
               <div class="project-tags">
-                <span>Python</span>
-                <span>FastAPI</span>
-                <span>AutoML</span>
-                <span>Docker</span>
-                <span>Kubernetes</span>
-                <span>RAG</span>
+                <span>Python</span><span>FastAPI</span><span>AutoML</span><span>Docker</span><span>Kubernetes</span><span>RAG</span>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- PROJECT 2: WORKFORCEIQ -->
+        <!-- WorkforceIQ -->
         <article class="project-card">
           <div class="project-header">
             <div class="project-cat">02 / WORKFORCE ANALYTICS PLATFORM</div>
@@ -736,33 +745,19 @@
             <h3>WorkforceIQ</h3>
             <p class="project-tagline">From raw data to predictive models to dashboards people actually open.</p>
             <p class="project-desc">
-              A full analytics pipeline that turns messy employee and call-center data into actionable workforce insights — attrition prediction, behavioral segmentation, and sentiment intelligence — delivered through interactive dashboards and automated reporting.
+              A full analytics pipeline that turns messy employee and call-center data into actionable workforce insights — attrition prediction, behavioral segmentation, and sentiment intelligence.
             </p>
             <ul class="project-bullets">
-              <li>
-                <span>•</span>
-                <span><strong>End-to-End Analytics Pipeline:</strong> Engineered a complete pipeline ingesting and scoring 50K+ employee records and 10K call transcripts, creating a scalable data backbone for all downstream machine learning models and dashboards.</span>
-              </li>
-              <li>
-                <span>•</span>
-                <span><strong>Multiple Production ML Models:</strong> Built Random Forest for attrition prediction (85%+ accuracy), K-Means clustering that exposed a high-risk, low-satisfaction employee segment, and VADER sentiment analysis (~92% label agreement) — converting raw data into actionable workforce insights.</span>
-              </li>
-              <li>
-                <span>•</span>
-                <span><strong>Automated Insight Delivery:</strong> Connected scored datasets to Tableau workbooks, self-contained Plotly dashboards, and a Power Automate workflow that emailed stakeholder summaries — eliminating manual HR reporting and cutting turnaround by 60%.</span>
-              </li>
+              <li><span>•</span><span><strong>End-to-End Analytics Pipeline:</strong> Ingested and scored 50K+ employee records and 10K call transcripts into a scalable data backbone.</span></li>
+              <li><span>•</span><span><strong>Multiple Production ML Models:</strong> Random Forest (85%+ attrition accuracy), K-Means clustering, and VADER sentiment analysis (~92% agreement).</span></li>
+              <li><span>•</span><span><strong>Automated Insight Delivery:</strong> Tableau + Plotly dashboards and Power Automate workflows that cut HR reporting turnaround by 60%.</span></li>
             </ul>
             <div class="project-footer">
               <div class="project-links">
                 <a href="https://github.com/sangramghose/Workforce-and-Industry-Trend-Analyzer" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
               <div class="project-tags">
-                <span>Random Forest</span>
-                <span>K-Means</span>
-                <span>VADER</span>
-                <span>Tableau</span>
-                <span>Plotly</span>
-                <span>Power Automate</span>
+                <span>Random Forest</span><span>K-Means</span><span>VADER</span><span>Tableau</span><span>Plotly</span><span>Power Automate</span>
               </div>
             </div>
           </div>
@@ -838,60 +833,127 @@
     <section class="wrap" id="education">
       <div class="heading">
         <p class="label">03 / Academic foundation</p>
-        <h2>
-          Where the signal<br>
-          <em>was trained.</em>
-        </h2>
+        <h2>Where the signal<br><em>was trained.</em></h2>
       </div>
       <div class="timeline">
         <article class="edu-role">
-          <img src="giet_university_logo.png"
-               alt="Gandhi Institute of Engineering and Technology University"
-               class="role-logo">
+          <img src="giet_university_logo.png" alt="Gandhi Institute of Engineering and Technology University" class="role-logo">
           <div class="edu-content">
             <h3>Bachelor of Technology (B.Tech)</h3>
             <h4>Computer Science and Engineering</h4>
-            <p class="edu-meta" style="margin-top: 10px;">
-              Gandhi Institute of Engineering and Technology University
-            </p>
-            <p class="edu-meta" style="margin-top: 6px; color: var(--muted);">
-              Aug 2023 – Present · Gunupur, Odisha, India
-            </p>
-            <p class="edu-meta" style="margin-top: 4px; color: var(--muted);">
-              Expected Graduation: June 2027
-            </p>
+            <p class="edu-meta" style="margin-top: 10px;">Gandhi Institute of Engineering and Technology University</p>
+            <p class="edu-meta" style="margin-top: 6px; color: var(--muted);">Aug 2023 – Present · Gunupur, Odisha, India</p>
+            <p class="edu-meta" style="margin-top: 4px; color: var(--muted);">Expected Graduation: June 2027</p>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Skills -->
+    <!-- ========== SKILLS (TOP-NOTCH REDESIGN) ========== -->
     <section class="wrap" id="skills">
       <div class="heading">
         <p class="label">04 / Instruments</p>
-        <h2>A practical<br><em>stack of curiosity.</em></h2>
+        <h2>A practical<br><em>stack of depth.</em></h2>
+        <p class="note">Tools I use to turn noisy data into systems that actually ship and matter.</p>
       </div>
-      <div class="skills">
-        <div class="skill">
-          <b>01</b>
-          <h3>DATA</h3>
-          <p>Python · SQL · PostgreSQL · Cypher · N1QL · Pandas · NumPy · EDA</p>
+
+      <div class="skills-grid">
+
+        <!-- 01 -->
+        <div class="skill-card">
+          <div class="num">01 / AI & MACHINE LEARNING</div>
+          <h3>Predictive Systems</h3>
+          <p class="desc">End-to-end modeling from raw data to production insights — classification, clustering, forecasting, and explainability.</p>
+          <div class="skill-tags">
+            <span>Random Forest</span>
+            <span>K-Means</span>
+            <span>Isolation Forest</span>
+            <span>Prophet</span>
+            <span>Scikit-learn</span>
+            <span>Feature Engineering</span>
+            <span>Model Validation</span>
+          </div>
         </div>
-        <div class="skill">
-          <b>02</b>
-          <h3>MACHINE INTELLIGENCE</h3>
-          <p>Classification · Forecasting · Random Forest · K-Means · NLP · VADER</p>
+
+        <!-- 02 -->
+        <div class="skill-card">
+          <div class="num">02 / GENERATIVE AI & AGENTS</div>
+          <h3>Agentic Intelligence</h3>
+          <p class="desc">Building autonomous agents, RAG pipelines, and multi-step reasoning systems that take real actions.</p>
+          <div class="skill-tags">
+            <span>LangGraph</span>
+            <span>RAG</span>
+            <span>LLMs</span>
+            <span>AI Agents</span>
+            <span>Graph RAG</span>
+            <span>Tool Use</span>
+            <span>Prompt Engineering</span>
+          </div>
         </div>
-        <div class="skill">
-          <b>03</b>
-          <h3>VISUAL LANGUAGE</h3>
-          <p>Tableau · Plotly · Statistical Analysis · Automated Reporting</p>
+
+        <!-- 03 -->
+        <div class="skill-card">
+          <div class="num">03 / DATA ENGINEERING</div>
+          <h3>Reliable Pipelines</h3>
+          <p class="desc">Designing clean, scalable data foundations — from ingestion and transformation to quality and delivery.</p>
+          <div class="skill-tags">
+            <span>Python</span>
+            <span>Pandas</span>
+            <span>SQL</span>
+            <span>ETL</span>
+            <span>Data Cleaning</span>
+            <span>PostgreSQL</span>
+            <span>MongoDB</span>
+          </div>
         </div>
-        <div class="skill">
-          <b>04</b>
-          <h3>SYSTEMS</h3>
-          <p>FastAPI · Docker · Git · CI/CD · ETL · Agile / Scrum</p>
+
+        <!-- 04 -->
+        <div class="skill-card">
+          <div class="num">04 / BACKEND & SYSTEMS</div>
+          <h3>Production Engines</h3>
+          <p class="desc">Fast, reliable services and microservices that power real products and analytics platforms.</p>
+          <div class="skill-tags">
+            <span>FastAPI</span>
+            <span>REST APIs</span>
+            <span>JWT / OAuth</span>
+            <span>WebSockets</span>
+            <span>Neo4j</span>
+            <span>Cypher</span>
+            <span>Couchbase</span>
+          </div>
         </div>
+
+        <!-- 05 -->
+        <div class="skill-card">
+          <div class="num">05 / VISUALIZATION & DELIVERY</div>
+          <h3>Insight Surfaces</h3>
+          <p class="desc">Turning model outputs into clear, actionable dashboards and automated reports stakeholders actually use.</p>
+          <div class="skill-tags">
+            <span>Tableau</span>
+            <span>Plotly</span>
+            <span>Chart.js</span>
+            <span>Power Automate</span>
+            <span>Executive PDFs</span>
+            <span>Storytelling</span>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="skill-card">
+          <div class="num">06 / CLOUD & DEVOPS</div>
+          <h3>Deploy Anywhere</h3>
+          <p class="desc">Containerized, orchestrated, and production-ready systems that run on any infrastructure.</p>
+          <div class="skill-tags">
+            <span>Docker</span>
+            <span>Kubernetes</span>
+            <span>Helm</span>
+            <span>CI/CD</span>
+            <span>Render</span>
+            <span>Netlify</span>
+            <span>OCI</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -904,120 +966,75 @@
         </div>
 
         <div class="cert-list">
-
-          <!-- 1. Nebius -->
           <div class="cert-card">
             <img src="AGENTIC AI BUILDER ASSOCIATE.png" alt="Nebius Agentic AI Builder Associate" class="cert-badge">
             <div>
               <div class="cert-num">01</div>
               <h3>Agentic AI Builder Associate</h3>
               <p class="cert-meta">Nebius · Issued Jul 2026</p>
-              <p class="cert-desc">
-                Demonstrates the ability to design, build, and deploy autonomous agentic systems using modern generative AI workflows. Covers multi-agent orchestration, tool-use patterns, memory management, and production-ready RAG pipelines for intelligent decision-making systems.
-              </p>
+              <p class="cert-desc">Demonstrates the ability to design, build, and deploy autonomous agentic systems using modern generative AI workflows. Covers multi-agent orchestration, tool-use patterns, memory management, and production-ready RAG pipelines.</p>
               <div class="cert-tags">
-                <span>Agentic AI</span>
-                <span>Generative AI</span>
-                <span>LLMs</span>
-                <span>AI Agents</span>
-                <span>RAG</span>
+                <span>Agentic AI</span><span>Generative AI</span><span>LLMs</span><span>AI Agents</span><span>RAG</span>
               </div>
-              <a href="https://www.credly.com/badges/d13812c9-7e1c-4803-bd84-98b1c36b8e92/public_url" target="_blank" rel="noopener noreferrer" class="cred-link">
-                View Credential ↗
-              </a>
+              <a href="https://www.credly.com/badges/d13812c9-7e1c-4803-bd84-98b1c36b8e92/public_url" target="_blank" rel="noopener noreferrer" class="cred-link">View Credential ↗</a>
             </div>
           </div>
 
-          <!-- 2. Altair ML -->
           <div class="cert-card">
             <img src="Machine Learning Professional.png" alt="Altair Machine Learning Professional" class="cert-badge">
             <div>
               <div class="cert-num">02</div>
               <h3>Machine Learning Professional</h3>
               <p class="cert-meta">Altair RapidMiner · Issued Sep 2025</p>
-              <p class="cert-desc">
-                Validates expertise in end-to-end machine learning workflows including classification, regression, clustering, and correlation analysis. Focuses on model validation techniques, feature engineering, and building reliable predictive models suitable for real-world business applications.
-              </p>
+              <p class="cert-desc">Validates expertise in end-to-end machine learning workflows including classification, regression, clustering, and correlation analysis with strong focus on model validation.</p>
               <div class="cert-tags">
-                <span>Machine Learning</span>
-                <span>Classification</span>
-                <span>Regression</span>
-                <span>Model Validation</span>
-                <span>Clustering</span>
+                <span>Machine Learning</span><span>Classification</span><span>Regression</span><span>Model Validation</span><span>Clustering</span>
               </div>
-              <a href="https://openbadgefactory.com/v1/assertion/a0ad7db455d76ebb4d48ccb5a71d70472618a764" target="_blank" rel="noopener noreferrer" class="cred-link">
-                View Credential ↗
-              </a>
+              <a href="https://openbadgefactory.com/v1/assertion/a0ad7db455d76ebb4d48ccb5a71d70472618a764" target="_blank" rel="noopener noreferrer" class="cred-link">View Credential ↗</a>
             </div>
           </div>
 
-          <!-- 3. Altair Data Engineering -->
           <div class="cert-card">
             <img src="Data Engineering Professional.png" alt="Altair Data Engineering Professional" class="cert-badge">
             <div>
               <div class="cert-num">03</div>
               <h3>Data Engineering Professional</h3>
               <p class="cert-meta">Altair · Issued Aug 2025</p>
-              <p class="cert-desc">
-                Certifies proficiency in designing robust ETL pipelines, data preparation, transformation, and processing workflows. Emphasizes creating clean, scalable datasets that serve as reliable foundations for machine learning and analytics systems.
-              </p>
+              <p class="cert-desc">Certifies proficiency in designing robust ETL pipelines, data preparation, transformation, and processing workflows for scalable ML datasets.</p>
               <div class="cert-tags">
-                <span>Data Engineering</span>
-                <span>Data Preparation</span>
-                <span>Data Transformation</span>
-                <span>Data Processing</span>
+                <span>Data Engineering</span><span>Data Preparation</span><span>Data Transformation</span><span>Data Processing</span>
               </div>
-              <a href="https://openbadgepassport.com/app/badge/info/984892" target="_blank" rel="noopener noreferrer" class="cred-link">
-                View Credential ↗
-              </a>
+              <a href="https://openbadgepassport.com/app/badge/info/984892" target="_blank" rel="noopener noreferrer" class="cred-link">View Credential ↗</a>
             </div>
           </div>
 
-          <!-- 4. Oracle OCI -->
           <div class="cert-card">
             <img src="Professional Oracle Cloud Infrastructure Networking.png" alt="Oracle Cloud Infrastructure Networking Professional" class="cert-badge">
             <div>
               <div class="cert-num">04</div>
               <h3>Oracle Cloud Infrastructure 2025 Certified Networking Professional</h3>
               <p class="cert-meta">Oracle · Issued Oct 2025 · <span style="color: var(--coral);">Expires Oct 2027</span></p>
-              <p class="cert-desc">
-                Validates advanced knowledge of designing, implementing, and securing network architectures on Oracle Cloud Infrastructure. Covers Virtual Cloud Networks (VCN), network security, connectivity patterns, and multi-cloud networking strategies.
-              </p>
+              <p class="cert-desc">Validates advanced knowledge of designing, implementing, and securing network architectures on Oracle Cloud Infrastructure including VCNs and multi-cloud strategies.</p>
               <div class="cert-tags">
-                <span>OCI</span>
-                <span>Cloud Networking</span>
-                <span>VCN</span>
-                <span>Network Security</span>
-                <span>Multicloud</span>
+                <span>OCI</span><span>Cloud Networking</span><span>VCN</span><span>Network Security</span><span>Multicloud</span>
               </div>
-              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=E50259E66E1F004BBBEAA7A2CA7660078036FD97A04C1C00895C9B1147E78666" target="_blank" rel="noopener noreferrer" class="cred-link">
-                View Credential ↗
-              </a>
+              <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=E50259E66E1F004BBBEAA7A2CA7660078036FD97A04C1C00895C9B1147E78666" target="_blank" rel="noopener noreferrer" class="cred-link">View Credential ↗</a>
             </div>
           </div>
 
-          <!-- 5. Symphony -->
           <div class="cert-card">
             <img src="Associate_Dev_Badge.png" alt="Symphony Certified Associate Developer" class="cert-badge">
             <div>
               <div class="cert-num">05</div>
               <h3>Symphony Certified Associate Developer</h3>
               <p class="cert-meta">Symphony · Issued Mar 2025</p>
-              <p class="cert-desc">
-                Demonstrates competence in building bots, extension applications, and integrations on the Symphony platform using REST APIs. Focuses on platform development best practices for secure and scalable enterprise messaging solutions.
-              </p>
+              <p class="cert-desc">Demonstrates competence in building bots, extension applications, and integrations on the Symphony platform using REST APIs.</p>
               <div class="cert-tags">
-                <span>Bot Development</span>
-                <span>REST APIs</span>
-                <span>Extension Apps</span>
-                <span>Platform Development</span>
+                <span>Bot Development</span><span>REST APIs</span><span>Extension Apps</span><span>Platform Development</span>
               </div>
-              <a href="https://www.credly.com/badges/45db2bad-32bf-40f7-9bf1-1a54864d25ec/public_url" target="_blank" rel="noopener noreferrer" class="cred-link">
-                View Credential ↗
-              </a>
+              <a href="https://www.credly.com/badges/45db2bad-32bf-40f7-9bf1-1a54864d25ec/public_url" target="_blank" rel="noopener noreferrer" class="cred-link">View Credential ↗</a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
