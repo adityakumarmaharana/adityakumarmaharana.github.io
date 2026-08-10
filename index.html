@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Aditya Kumar Maharana — AI/ML Engineer specializing in GenAI, LLM & RAG systems.">
-  <title>Aditya Kumar Maharana — AI/ML Engineer</title>
+  <meta name="description" content="Aditya Kumar Maharana — AI engineer building useful systems from messy data.">
+  <title>Aditya Kumar Maharana — AI / Data Systems</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,719 +20,1000 @@
       --blue: #2f73c8;
       --white: #fffdf8;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
+      margin: 0;
       background: var(--paper);
       color: var(--ink);
       font-family: "IBM Plex Sans", sans-serif;
-      line-height: 1.6;
     }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; background: none; border: none; }
-
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--coral);
+      outline-offset: 4px;
+    }
     .wrap {
-      width: min(1200px, 100%);
-      margin: 0 auto;
-      padding: 0 24px;
+      width: min(1440px, 100%);
+      margin: auto;
+      padding: 0 clamp(24px, 5vw, 80px);
     }
-
-    /* Header */
     header {
       height: 70px;
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 5;
       display: flex;
       align-items: center;
       gap: 30px;
-      padding: 0 24px;
-      background: rgba(244, 240, 231, 0.92);
+      padding: 0 clamp(24px, 5vw, 80px);
+      background: rgba(244, 240, 231, 0.95);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
     }
     .brand {
-      font: 500 13px "IBM Plex Mono";
-      letter-spacing: 0.1em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font: 500 12px "IBM Plex Mono";
+      letter-spacing: 0.12em;
     }
     .brand b {
-      width: 8px;
-      height: 8px;
+      display: inline-block;
+      width: 7px;
+      height: 7px;
       background: var(--lime);
       border-radius: 50%;
+      margin-right: 9px;
+    }
+    .brand i {
+      font-style: normal;
+      color: var(--muted);
+      margin: 0 6px;
     }
     .links {
       display: flex;
       gap: 28px;
       margin-left: auto;
       font: 11px "IBM Plex Mono";
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .links a:hover {
+      color: var(--coral);
+    }
+    .resume,
+    .cta {
+      background: var(--lime);
+      border: 1px solid var(--lime);
+      padding: 13px 16px;
+      font: 11px "IBM Plex Mono";
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .links a:hover { color: var(--coral); }
-    .resume {
-      background: var(--lime);
-      color: var(--ink);
-      padding: 11px 18px;
-      font: 11px "IBM Plex Mono";
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border: 1px solid var(--lime);
-    }
-    .resume:hover {
+    .resume:hover,
+    .cta:hover {
       background: var(--ink);
       color: var(--paper);
       border-color: var(--ink);
     }
-    .menu { display: none; font-size: 22px; }
-
-    /* Hero */
+    .menu {
+      display: none;
+      background: none;
+      border: 0;
+    }
     .hero {
-      padding: 120px 0 100px;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-flex;
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 8vw;
       align-items: center;
-      gap: 8px;
-      font: 12px "IBM Plex Mono";
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
+      padding-top: 90px;
+      padding-bottom: 110px;
+      background-image:
+        linear-gradient(rgba(185, 180, 169, 0.23) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 180, 169, 0.23) 1px, transparent 1px);
+      background-size: 80px 80px;
     }
-    .hero-badge::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      background: var(--coral);
-      border-radius: 50%;
+    .label {
+      font: 11px "IBM Plex Mono";
+      letter-spacing: 0.17em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin: 0 0 25px;
+    }
+    .dot {
+      color: var(--coral);
+      margin-right: 10px;
     }
     .hero h1 {
-      font: 500 clamp(42px, 7vw, 72px) / 1.05 "Bodoni Moda";
-      letter-spacing: -0.04em;
-      margin-bottom: 16px;
+      font: 500 clamp(45px, 6vw, 82px) / 0.98 "Bodoni Moda";
+      letter-spacing: -0.06em;
+      margin: 0 0 30px;
     }
-    .hero-sub {
-      font: 16px "IBM Plex Mono";
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 40px;
-    }
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      padding: 14px 26px;
-      font: 12px "IBM Plex Mono";
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border: 1px solid var(--ink);
-      transition: all 0.2s;
-    }
-    .btn-primary {
-      background: var(--ink);
-      color: var(--paper);
-    }
-    .btn-primary:hover {
-      background: var(--coral);
-      border-color: var(--coral);
-    }
-    .btn-outline:hover {
-      background: var(--ink);
-      color: var(--paper);
-    }
-
-    /* Sections */
-    section { padding: 100px 0; }
-    .section-label {
-      font: 11px "IBM Plex Mono";
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-    .section-title {
-      font: 500 clamp(32px, 4.5vw, 48px) / 1.1 "Bodoni Moda";
-      letter-spacing: -0.03em;
-      margin-bottom: 48px;
-    }
-    .section-title em {
+    .hero h1 em,
+    h2 em {
       color: var(--coral);
       font-style: italic;
     }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 48px;
-      align-items: start;
+    .lead {
+      max-width: 500px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
     }
-    .about-photo {
-      width: 160px;
-      height: 160px;
+    .actions {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .under {
+      text-transform: uppercase;
+      font: 11px "IBM Plex Mono";
+      letter-spacing: 0.09em;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 7px;
+    }
+    .under:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+    .signal {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 24px;
+      position: relative;
+    }
+    .profile-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .profile-pic {
+      width: 140px;
+      height: 140px;
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid var(--lime);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
-    .about-text {
-      font-size: 17px;
+    .signal-head,
+    .signal-foot {
+      display: flex;
+      justify-content: space-between;
+      font: 10px "IBM Plex Mono";
+      letter-spacing: 0.1em;
       color: var(--muted);
-      line-height: 1.7;
-      max-width: 640px;
     }
-    .about-text strong { color: var(--ink); }
-
-    /* Experience */
-    .exp-item {
+    svg {
+      max-width: 100%;
+    }
+    .chart {
+      margin: 25px 0 20px;
+    }
+    .chart path {
+      fill: none;
+      stroke: var(--blue);
+      stroke-width: 2;
+    }
+    .chart .accent {
+      stroke: var(--coral);
+    }
+    .metric-row {
       display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 32px;
-      padding: 36px 0;
-      border-bottom: 1px solid var(--line);
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      gap: 12px;
     }
-    .exp-logo {
-      width: 72px;
-      height: 72px;
-      object-fit: contain;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px;
+    .metric strong {
+      font: 500 25px "Bodoni Moda";
+      display: block;
     }
-    .exp-meta {
-      font: 12px "IBM Plex Mono";
+    .metric small {
+      display: block;
       color: var(--muted);
-      margin-bottom: 6px;
+      font: 10px "IBM Plex Mono";
+      line-height: 1.4;
     }
-    .exp-item h3 {
-      font: 500 24px "Bodoni Moda";
-      margin-bottom: 4px;
-    }
-    .exp-item h4 {
-      font: 14px "IBM Plex Mono";
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-    .exp-item ul {
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .exp-item li { margin-bottom: 6px; }
-    .exp-stack {
-      margin-top: 14px;
-      font: 11px "IBM Plex Mono";
+    .ticker {
+      border-block: 1px solid var(--line);
+      padding: 15px;
+      overflow: hidden;
+      white-space: nowrap;
       color: var(--blue);
-      letter-spacing: 0.05em;
+      font: 11px "IBM Plex Mono";
+      letter-spacing: 0.2em;
     }
-
-    /* Projects */
-    .projects-grid {
+    .ticker span {
+      display: inline-block;
+      animation: move 28s linear infinite;
+    }
+    @keyframes move {
+      to {
+        transform: translateX(-30%);
+      }
+    }
+    section {
+      padding: 130px 0;
+    }
+    .heading {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
+      grid-template-columns: 4fr 5fr 3fr;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 65px;
     }
-    .project-card {
+    .heading h2 {
+      font: 500 clamp(38px, 4.4vw, 62px) / 1 "Bodoni Moda";
+      letter-spacing: -0.05em;
+      margin: 0;
+    }
+    .note {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 270px;
+    }
+    .filters {
+      border-top: 1px solid var(--line);
+      padding: 16px 0;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font: 10px "IBM Plex Mono";
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .filters button {
       border: 1px solid var(--line);
-      background: var(--white);
+      background: transparent;
+      padding: 7px 12px;
+      font: 10px "IBM Plex Mono";
+    }
+    .filters button.active,
+    .filters button:hover {
+      background: var(--lime);
+      border-color: var(--lime);
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 18px;
+    }
+    .project {
+      border: 1px solid var(--line);
       display: flex;
       flex-direction: column;
+      min-height: 590px;
       transition: transform 0.25s, border-color 0.25s;
     }
-    .project-card:hover {
+    .project:hover {
       transform: translateY(-4px);
       border-color: var(--coral);
     }
     .project-top {
-      padding: 14px 20px;
-      font: 11px "IBM Plex Mono";
-      letter-spacing: 0.1em;
-      color: var(--muted);
+      padding: 17px 22px;
       border-bottom: 1px solid var(--line);
+      font: 10px "IBM Plex Mono";
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+    .visual {
+      height: 220px;
+      background: var(--deep);
+      border-bottom: 1px solid var(--line);
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nodes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      position: relative;
+    }
+    .node {
+      padding: 10px;
+      border: 1px solid var(--blue);
+      color: var(--blue);
+      font: 10px "IBM Plex Mono";
+      background: var(--paper);
+    }
+    .node:last-child {
+      border-color: var(--coral);
+      color: var(--coral);
+    }
+    .bars {
+      height: 130px;
+      display: flex;
+      align-items: end;
+      gap: 10px;
+    }
+    .bars i {
+      display: block;
+      width: 22px;
+      background: var(--coral);
+      height: 45%;
+    }
+    .bars i:nth-child(2) {
+      height: 70%;
+    }
+    .bars i:nth-child(3) {
+      height: 55%;
+    }
+    .bars i:nth-child(4) {
+      height: 88%;
+    }
+    .bars i:nth-child(5) {
+      height: 63%;
+    }
+    .bars i:nth-child(6) {
+      height: 78%;
     }
     .project-body {
-      padding: 24px;
-      flex: 1;
+      padding: 28px;
       display: flex;
+      flex: 1;
       flex-direction: column;
     }
     .project-body h3 {
-      font: 500 28px "Bodoni Moda";
-      margin-bottom: 12px;
+      font: 500 48px "Bodoni Moda";
+      margin: 3px 0 12px;
+      letter-spacing: -0.05em;
     }
     .project-body p {
       color: var(--muted);
+      line-height: 1.6;
       font-size: 14px;
-      margin-bottom: 20px;
-      flex: 1;
+      max-width: 470px;
     }
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+    .outcome {
+      margin-top: auto;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
     }
-    .project-tags span {
+    .outcome strong {
+      font: 500 31px "Bodoni Moda";
+      display: block;
+    }
+    .outcome small {
       font: 10px "IBM Plex Mono";
-      padding: 4px 10px;
-      border: 1px solid var(--line);
       color: var(--muted);
     }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+    .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 20px;
     }
-    .skill-card {
+    .tags span {
       border: 1px solid var(--line);
-      padding: 24px;
-      min-height: 180px;
-    }
-    .skill-card b {
-      font: 11px "IBM Plex Mono";
-      color: var(--coral);
-    }
-    .skill-card h3 {
-      font: 500 18px "Bodoni Moda";
-      margin: 16px 0 10px;
-    }
-    .skill-card p {
-      font-size: 13px;
+      padding: 6px 8px;
       color: var(--muted);
+      font: 9px "IBM Plex Mono";
     }
-
-    /* Education */
-    .edu-item {
+    .band {
+      background: var(--deep);
+    }
+    .timeline {
+      border-top: 1px solid var(--line);
+    }
+    .role {
       display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 32px;
-      padding: 32px 0;
+      grid-template-columns: 100px 140px 1fr;
+      gap: 28px;
+      padding: 42px 0;
       border-bottom: 1px solid var(--line);
+      align-items: start;
     }
-    .edu-item h3 {
-      font: 500 24px "Bodoni Moda";
-      margin-bottom: 6px;
+    .role-logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
     }
-    .edu-item h4 {
-      font: 15px "IBM Plex Mono";
+    .year {
+      font: 500 52px "Bodoni Moda";
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+    .role h3 {
+      font: 500 28px "Bodoni Moda";
+      margin: 4px 0;
+    }
+    .role h4 {
+      font: 500 13px "IBM Plex Mono";
+      margin: 0 0 18px;
       color: var(--muted);
-      margin-bottom: 8px;
+    }
+    .role ul {
+      color: var(--muted);
+      line-height: 1.65;
+      padding-left: 18px;
+      font-size: 14px;
+      margin: 0 0 18px;
+    }
+    .stack {
+      font: 10px "IBM Plex Mono";
+      color: var(--blue);
+      letter-spacing: 0.1em;
+    }
+    .edu-role {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 28px;
+      padding: 42px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .edu-content h3 {
+      font: 500 28px "Bodoni Moda";
+      margin: 0 0 6px;
+    }
+    .edu-content h4 {
+      font: 500 15px "IBM Plex Mono";
+      margin: 0 0 12px;
+      color: var(--muted);
     }
     .edu-meta {
-      font: 13px "IBM Plex Mono";
+      font: 12px "IBM Plex Mono";
       color: var(--blue);
+      letter-spacing: 0.05em;
     }
-
-    /* Certs */
-    .certs-grid {
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+    }
+    .skill {
+      min-height: 260px;
+      padding: 24px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .skill b {
+      color: var(--coral);
+      font: 10px "IBM Plex Mono";
+    }
+    .skill h3 {
+      font: 500 21px "Bodoni Moda";
+      margin: 35px 0 13px;
+    }
+    .skill p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .certs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      border-block: 1px solid var(--line);
     }
-    .cert-card {
-      border: 1px solid var(--line);
-      padding: 24px;
+    .cert {
+      padding: 25px;
+      border-right: 1px solid var(--line);
+      min-height: 150px;
     }
-    .cert-card span {
-      font: 11px "IBM Plex Mono";
+    .cert:last-child {
+      border: 0;
+    }
+    .cert span {
       color: var(--coral);
+      font: 10px "IBM Plex Mono";
     }
-    .cert-card strong {
+    .cert strong {
       display: block;
-      font: 500 16px "Bodoni Moda";
-      margin: 12px 0 6px;
+      font: 500 18px "Bodoni Moda";
+      margin: 17px 0;
     }
-    .cert-card small {
-      font: 12px "IBM Plex Mono";
+    .cert small {
+      font: 9px "IBM Plex Mono";
       color: var(--muted);
     }
-
-    /* Achievements */
-    .achievements-list {
-      display: grid;
-      gap: 16px;
-    }
-    .achievement {
-      border: 1px solid var(--line);
-      padding: 20px 24px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .achievement-num {
-      font: 500 20px "Bodoni Moda";
-      color: var(--coral);
-      min-width: 32px;
-    }
-
-    /* Contact */
     .contact {
-      text-align: center;
-      padding-bottom: 120px;
+      padding: 125px 0;
     }
     .contact h2 {
-      font: 500 clamp(36px, 5vw, 56px) / 1.1 "Bodoni Moda";
-      margin-bottom: 16px;
+      font: 500 clamp(50px, 7vw, 100px) / 0.95 "Bodoni Moda";
+      letter-spacing: -0.07em;
     }
     .contact p {
       color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto 36px;
+      max-width: 390px;
+      line-height: 1.6;
     }
-    .contact-actions {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    /* Footer */
-    footer {
+    .dark {
       background: var(--ink);
       color: var(--paper);
-      padding: 28px 0 40px;
+      padding: 26px 0 0;
     }
     .footer-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font: 11px "IBM Plex Mono";
+      font: 10px "IBM Plex Mono";
+      letter-spacing: 0.1em;
       color: #c6c0b4;
-      margin-bottom: 40px;
     }
-    .footer-social {
+    .social {
       display: flex;
-      gap: 24px;
+      gap: 20px;
     }
-    .footer-social a:hover { color: var(--lime); }
+    .social a:hover {
+      color: var(--lime);
+    }
     .wordmark {
-      font: 500 clamp(80px, 18vw, 220px) / 0.85 "Bodoni Moda";
-      letter-spacing: -0.06em;
+      font: 500 clamp(120px, 24vw, 350px) / 0.8 "Bodoni Moda";
+      letter-spacing: -0.1em;
       color: #30343a;
-      user-select: none;
+      margin-left: -2%;
+      margin-top: 65px;
+      white-space: nowrap;
     }
-
-    /* Responsive */
+    .hidden {
+      display: none !important;
+    }
     @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .certs-grid { grid-template-columns: 1fr; }
-      .exp-item, .edu-item { grid-template-columns: 1fr; gap: 16px; }
+      .role {
+        grid-template-columns: 80px 1fr;
+        gap: 20px;
+      }
+      .year {
+        font-size: 42px;
+      }
+      .edu-role {
+        grid-template-columns: 80px 1fr;
+      }
     }
-    @media (max-width: 640px) {
-      .links, .resume { display: none; }
-      .menu { display: block; margin-left: auto; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: center; }
+    @media (max-width: 800px) {
+      header {
+        height: 62px;
+      }
+      .links {
+        display: none;
+      }
+      .menu {
+        display: block;
+        margin-left: auto;
+      }
+      .resume {
+        display: none;
+      }
+      .hero {
+        display: block;
+        min-height: 0;
+        padding-top: 95px;
+      }
+      .signal {
+        margin-top: 60px;
+      }
+      .heading {
+        display: block;
+      }
+      .note {
+        margin-top: 22px;
+      }
+      .projects {
+        grid-template-columns: 1fr;
+      }
+      .role {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .edu-role {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .role-logo {
+        width: 70px;
+        height: 70px;
+      }
+      .skills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .certs {
+        grid-template-columns: 1fr;
+      }
+      .cert {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .cert:last-child {
+        border-bottom: 0;
+      }
+      .footer-row {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    @media (max-width: 480px) {
+      section {
+        padding: 90px 0;
+      }
+      .hero h1 {
+        font-size: 47px;
+      }
+      .actions {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .skills {
+        grid-template-columns: 1fr;
+      }
+      .project-body h3 {
+        font-size: 40px;
+      }
+      .metric-row {
+        gap: 8px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .ticker span,
+      .project {
+        animation: none;
+        transition: none;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <a class="brand" href="#top"><b></b> ADITYA / SYSTEMS</a>
+  <header id="site-header">
+    <a class="brand" href="#top">
+      <b></b>ADITYA <i>/</i> SYSTEMS
+    </a>
     <nav class="links">
-      <a href="#about">About</a>
+      <a href="#projects">Work</a>
       <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
       <a href="#education">Education</a>
+      <a href="#skills">Stack</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="resume" href="mailto:adityakumarmaharana187@gmail.com?subject=Resume%20request">Resume ↗</a>
-    <button class="menu" aria-label="Menu">☰</button>
+    <a class="resume" href="mailto:adityakumarmaharana187@gmail.com?subject=Resume%20request">
+      Resume ↗
+    </a>
+    <button class="menu" aria-label="Open menu">☰</button>
   </header>
 
   <main id="top">
-
-    <!-- ========== 1. HERO ========== -->
-    <section class="hero wrap">
-      <div class="hero-badge">Available for great problems</div>
-      <h1>Aditya Kumar Maharana</h1>
-      <p class="hero-sub">AI/ML Engineer  •  GenAI  •  LLM  •  RAG</p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">Projects</a>
-        <a href="mailto:adityakumarmaharana187@gmail.com?subject=Resume%20request" class="btn btn-outline">Resume</a>
-        <a href="#contact" class="btn btn-outline">Contact</a>
-      </div>
-    </section>
-
-    <!-- ========== 2. ABOUT / PROFILE ========== -->
-    <section class="wrap" id="about">
-      <p class="section-label">01 / About</p>
-      <h2 class="section-title">Who I am & what I <em>build</em>.</h2>
-      <div class="about-grid">
-        <img src="profile.png" alt="Aditya Kumar Maharana" class="about-photo">
-        <div class="about-text">
-          I am an AI/ML Engineer focused on building practical systems that turn messy, real-world data into reliable decisions. 
-          My work sits at the intersection of <strong>Generative AI</strong>, <strong>Large Language Models</strong>, <strong>Retrieval-Augmented Generation (RAG)</strong>, and production-grade backend systems.
-          <br><br>
-          I enjoy designing agentic workflows, Graph RAG pipelines, and end-to-end ML systems that actually ship and create measurable impact.
+    <!-- Hero -->
+    <section class="hero wrap" id="hero">
+      <div>
+        <p class="label">
+          <span class="dot">●</span>
+          Available for great problems / Gunupur, India
+        </p>
+        <h1>
+          I build systems that turn
+          <em>noisy data</em>
+          into decisions.
+        </h1>
+        <p class="lead">
+          AI engineer and data storyteller. I work where unstructured
+          information, intelligent systems, and measurable outcomes meet.
+        </p>
+        <div class="actions">
+          <a class="cta" href="#projects">Explore the work ↗</a>
+          <a class="under" href="mailto:adityakumarmaharana187@gmail.com">Start a conversation ↗</a>
         </div>
       </div>
-    </section>
-
-    <!-- ========== 3. EXPERIENCE ========== -->
-    <section class="wrap" id="experience" style="background: var(--deep); margin: 0 -24px; padding-left: 24px; padding-right: 24px;">
-      <div class="wrap" style="padding: 0;">
-        <p class="section-label">02 / Experience</p>
-        <h2 class="section-title">Places that sharpened<br>the <em>signal</em>.</h2>
-
-        <div class="exp-item">
-          <img src="infinite_computer_solutions_logo.jpg" alt="Infinite" class="exp-logo">
-          <div>
-            <p class="exp-meta">Apr 2026 – Jun 2026 · Bengaluru</p>
-            <h3>AI Engineer Intern</h3>
-            <h4>Infinite Computer Solutions</h4>
-            <ul>
-              <li>Triaged 5,000+ daily network alarms using agentic AI workflows in LangGraph</li>
-              <li>Built Graph RAG pipelines on Neo4j with Cypher, embeddings & FastAPI</li>
-              <li>Shipped GenAI microservices with Python, PostgreSQL and Docker</li>
-            </ul>
-            <p class="exp-stack">LangGraph · Neo4j · FastAPI · Docker</p>
-          </div>
+      <div class="signal">
+        <div class="profile-wrap">
+          <img src="profile.png" alt="Aditya Kumar Maharana" class="profile-pic">
         </div>
-
-        <div class="exp-item">
-          <img src="inmorphis_logo.jpg" alt="inMorphis" class="exp-logo">
-          <div>
-            <p class="exp-meta">Jun 2025 – Jul 2025 · Noida</p>
-            <h3>Software Engineer Intern</h3>
-            <h4>inMorphis Private Limited</h4>
-            <ul>
-              <li>Built analytics microservices using N1QL and SQL on Couchbase</li>
-              <li>Designed a zero-downtime DB2 → Couchbase migration pipeline</li>
-              <li>Strengthened EmployWise 2.0 backend for scalable analytics</li>
-            </ul>
-            <p class="exp-stack">Couchbase · DB2 · SQL · Microservices</p>
-          </div>
+        <div class="signal-head">
+          <span>LIVE / PERSONAL SIGNAL</span>
+          <span>19.09°N / 83.22°E</span>
         </div>
-
-        <div class="exp-item">
-          <img src="zoho_logo.jpg" alt="Zoho" class="exp-logo">
-          <div>
-            <p class="exp-meta">Jun 2024 – Jul 2024 · Chennai</p>
-            <h3>Summer Intern</h3>
-            <h4>Zoho Corporation</h4>
-            <ul>
-              <li>Applied statistical & NLP techniques inside Zoho’s Zia AI ecosystem</li>
-              <li>Built and evaluated AI agents in Zia Agent Studio</li>
-              <li>Translated complex AI concepts for both technical and non-technical stakeholders</li>
-            </ul>
-            <p class="exp-stack">NLP · Zia AI · Agile</p>
+        <svg class="chart" viewBox="0 0 520 180" role="img">
+          <path d="M0 140 C50 135 60 110 105 120 S160 100 200 110 S250 70 290 90 S350 54 390 70 S450 28 520 34"></path>
+          <path class="accent" d="M0 153 C50 150 65 128 108 140 S165 118 205 127 S260 94 300 108 S350 82 396 91 S458 58 520 62"></path>
+        </svg>
+        <div class="metric-row">
+          <div class="metric">
+            <strong>5K+</strong>
+            <small>alarms triaged / day</small>
+          </div>
+          <div class="metric">
+            <strong>50K+</strong>
+            <small>records modelled</small>
+          </div>
+          <div class="metric">
+            <strong>85%+</strong>
+            <small>model accuracy</small>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== 4. FEATURED PROJECTS ========== -->
+    <div class="ticker">
+      <span>
+        DATA → SYSTEMS → INSIGHT → IMPACT →
+        DATA → SYSTEMS → INSIGHT → IMPACT →
+      </span>
+    </div>
+
+    <!-- Projects -->
     <section class="wrap" id="projects">
-      <p class="section-label">03 / Featured Projects</p>
-      <h2 class="section-title">Things I built that<br><em>actually work</em>.</h2>
-
-      <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-top">01 / Computer Vision + Deep Learning</div>
-          <div class="project-body">
-            <h3>Deepfake Face-Swap Detection</h3>
-            <p>AI-powered web application that detects manipulated face-swapped videos using Deep Learning, PyTorch, OpenCV and Flask.</p>
-            <div class="project-tags">
-              <span>PyTorch</span>
-              <span>OpenCV</span>
-              <span>Flask</span>
-              <span>Deep Learning</span>
+      <div class="heading">
+        <p class="label">01 / Selected work</p>
+        <h2>Useful things,<br><em>carefully built.</em></h2>
+        <p class="note">Not a collection of demos. A record of questions turned into working systems.</p>
+      </div>
+      <div class="filters" id="project-filter">
+        <span>FILTER /</span>
+        <button class="active" data-filter="all">ALL</button>
+        <button data-filter="ai">AI</button>
+        <button data-filter="ml">ML</button>
+      </div>
+      <div class="projects">
+        <article class="project" data-category="ai data">
+          <div class="project-top">01 / AI + DATA SYSTEMS</div>
+          <div class="visual">
+            <div class="nodes">
+              <span class="node">QUERY</span>
+              <span class="node">ETL</span>
+              <span class="node">ML</span>
+              <span class="node">REPORT</span>
             </div>
           </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-top">02 / RAG + Generative AI</div>
           <div class="project-body">
-            <h3>OceanRAG / FloatChat</h3>
-            <p>Retrieval-Augmented Generation system designed for domain-specific knowledge retrieval and conversational AI over large document collections.</p>
-            <div class="project-tags">
-              <span>RAG</span>
-              <span>LLM</span>
-              <span>LangChain</span>
-              <span>Vector DB</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-top">03 / AI Analytics Platform</div>
-          <div class="project-body">
+            <p class="label">From question to insight.</p>
             <h3>Deploytual</h3>
-            <p>AI-powered analytics that converts natural language questions into SQL, ETL pipelines, ML workflows and executive-ready reports.</p>
-            <div class="project-tags">
-              <span>Python</span>
-              <span>FastAPI</span>
-              <span>AutoML</span>
-              <span>Docker</span>
+            <p>AI-powered analytics that turns natural-language questions into SQL, ETL, ML workflows, and executive-ready reporting.</p>
+            <div class="outcome">
+              <strong>60%</strong>
+              <small>less manual reporting</small>
+            </div>
+            <div class="tags">
+              <span>PYTHON</span>
+              <span>FASTAPI</span>
+              <span>AUTOML</span>
+              <span>DOCKER</span>
             </div>
           </div>
         </article>
-
-        <article class="project-card">
-          <div class="project-top">04 / People Analytics</div>
+        <article class="project" data-category="ml data">
+          <div class="project-top">02 / ML + PEOPLE INTELLIGENCE</div>
+          <div class="visual">
+            <div class="bars">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
           <div class="project-body">
+            <p class="label">The workforce, decoded.</p>
             <h3>WorkforceIQ</h3>
-            <p>Predictive attrition modeling, employee segmentation and sentiment analysis across 50K+ records and 10K+ transcripts.</p>
-            <div class="project-tags">
-              <span>Random Forest</span>
-              <span>K-Means</span>
+            <p>Predictive attrition, employee segmentation, and sentiment intelligence across 50K+ employee records and 10K+ transcripts.</p>
+            <div class="outcome">
+              <strong>85%+</strong>
+              <small>attrition model accuracy</small>
+            </div>
+            <div class="tags">
+              <span>RANDOM FOREST</span>
+              <span>K-MEANS</span>
               <span>VADER</span>
-              <span>NLP</span>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- ========== 5. TECHNICAL SKILLS ========== -->
-    <section class="wrap" id="skills">
-      <p class="section-label">04 / Technical Skills</p>
-      <h2 class="section-title">Tools I use to<br><em>ship</em>.</h2>
+    <!-- Experience -->
+    <section class="band" id="experience">
+      <div class="wrap">
+        <div class="heading">
+          <p class="label">02 / Field notes</p>
+          <h2>Experience that<br><em>moves the signal.</em></h2>
+        </div>
+        <div class="timeline">
+          <article class="role">
+            <img src="infinite_computer_solutions_logo.jpg" alt="Infinite Computer Solutions" class="role-logo">
+            <div>
+              <div class="year">2026</div>
+              <p class="label" style="margin-top:10px;">Apr — Jun / Bengaluru</p>
+            </div>
+            <div>
+              <h3>AI Engineer Intern</h3>
+              <h4>Infinite Computer Solutions</h4>
+              <ul>
+                <li>Triaged 5,000+ daily network alarms with agentic AI workflows in LangGraph.</li>
+                <li>Built Graph RAG pipelines on Neo4j with Cypher, embeddings, and FastAPI.</li>
+                <li>Shipped GenAI microservices with Python, PostgreSQL, and Docker.</li>
+              </ul>
+              <p class="stack">LANGGRAPH / NEO4J / FASTAPI</p>
+            </div>
+          </article>
 
-      <div class="skills-grid">
-        <div class="skill-card">
-          <b>01</b>
-          <h3>AI / ML</h3>
-          <p>PyTorch · Scikit-learn · Random Forest · K-Means · NLP · VADER · Classification · Forecasting</p>
-        </div>
-        <div class="skill-card">
-          <b>02</b>
-          <h3>GenAI & LLM</h3>
-          <p>LangChain · LangGraph · RAG · Graph RAG · Prompt Engineering · Agent Systems · Embeddings</p>
-        </div>
-        <div class="skill-card">
-          <b>03</b>
-          <h3>Backend</h3>
-          <p>Python · FastAPI · Flask · PostgreSQL · Neo4j · Cypher · N1QL · Docker</p>
-        </div>
-        <div class="skill-card">
-          <b>04</b>
-          <h3>Data & Cloud</h3>
-          <p>SQL · Pandas · NumPy · ETL · AWS · CI/CD · Git · Agile</p>
+          <article class="role">
+            <img src="inmorphis_logo.jpg" alt="inMorphis" class="role-logo">
+            <div>
+              <div class="year">2025</div>
+              <p class="label" style="margin-top:10px;">Jun — Jul / Noida</p>
+            </div>
+            <div>
+              <h3>Software Engineer Intern</h3>
+              <h4>inMorphis Private Limited</h4>
+              <ul>
+                <li>Engineered analytics microservices with N1QL and SQL against Couchbase.</li>
+                <li>Architected a zero-downtime DB2 to Couchbase migration pipeline.</li>
+                <li>Strengthened EmployWise 2.0 backend services for scalable analytics.</li>
+              </ul>
+              <p class="stack">COUCHBASE / DB2 / SQL</p>
+            </div>
+          </article>
+
+          <article class="role">
+            <img src="zoho_logo.jpg" alt="Zoho Corporation" class="role-logo">
+            <div>
+              <div class="year">2024</div>
+              <p class="label" style="margin-top:10px;">Jun — Jul / Chennai</p>
+            </div>
+            <div>
+              <h3>Summer Intern</h3>
+              <h4>Zoho Corporation</h4>
+              <ul>
+                <li>Applied statistical and NLP techniques within Zoho's Zia AI ecosystem.</li>
+                <li>Built and evaluated AI agents in Zia Agent Studio.</li>
+                <li>Translated AI concepts for technical and non-technical stakeholders.</li>
+              </ul>
+              <p class="stack">NLP / ZIA AI / AGILE</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ========== 6. EDUCATION ========== -->
+    <!-- ========== UPDATED EDUCATION SECTION ========== -->
     <section class="wrap" id="education">
-      <p class="section-label">05 / Education</p>
-      <h2 class="section-title">Where the foundation<br>was <em>laid</em>.</h2>
+      <div class="heading">
+        <p class="label">03 / Academic foundation</p>
+        <h2>
+          Where the signal<br>
+          <em>was trained.</em>
+        </h2>
+      </div>
+      <div class="timeline">
+        <article class="edu-role">
+          <img src="giet_university_logo.png"
+               alt="Gandhi Institute of Engineering and Technology University"
+               class="role-logo">
+          <div class="edu-content">
+            <h3>Bachelor of Technology (B.Tech)</h3>
+            <h4>Computer Science and Engineering</h4>
+            <p class="edu-meta" style="margin-top: 10px;">
+              Gandhi Institute of Engineering and Technology University
+            </p>
+            <p class="edu-meta" style="margin-top: 6px; color: var(--muted);">
+              Aug 2023 – Present · Gunupur, Odisha, India
+            </p>
+            <p class="edu-meta" style="margin-top: 4px; color: var(--muted);">
+              Expected Graduation: June 2027
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-      <div class="edu-item">
-        <img src="giet_university_logo.png" alt="GIET University" class="exp-logo">
-        <div>
-          <h3>Bachelor of Technology (B.Tech)</h3>
-          <h4>Computer Science and Engineering</h4>
-          <p class="edu-meta" style="margin-top:8px;">Gandhi Institute of Engineering and Technology University</p>
-          <p class="edu-meta" style="margin-top:4px; color: var(--muted);">
-            Aug 2023 – Present · Gunupur, Odisha, India
-          </p>
-          <p class="edu-meta" style="margin-top:4px; color: var(--muted);">
-            Expected Graduation: June 2027
-          </p>
+    <!-- Skills -->
+    <section class="wrap" id="skills">
+      <div class="heading">
+        <p class="label">04 / Instruments</p>
+        <h2>A practical<br><em>stack of curiosity.</em></h2>
+      </div>
+      <div class="skills">
+        <div class="skill">
+          <b>01</b>
+          <h3>DATA</h3>
+          <p>Python · SQL · PostgreSQL · Cypher · N1QL · Pandas · NumPy · EDA</p>
+        </div>
+        <div class="skill">
+          <b>02</b>
+          <h3>MACHINE INTELLIGENCE</h3>
+          <p>Classification · Forecasting · Random Forest · K-Means · NLP · VADER</p>
+        </div>
+        <div class="skill">
+          <b>03</b>
+          <h3>VISUAL LANGUAGE</h3>
+          <p>Tableau · Plotly · Statistical Analysis · Automated Reporting</p>
+        </div>
+        <div class="skill">
+          <b>04</b>
+          <h3>SYSTEMS</h3>
+          <p>FastAPI · Docker · Git · CI/CD · ETL · Agile / Scrum</p>
         </div>
       </div>
     </section>
 
-    <!-- ========== 7. CERTIFICATIONS ========== -->
-    <section class="wrap">
-      <p class="section-label">06 / Certifications</p>
-      <h2 class="section-title">Credentials that<br><em>hold weight</em>.</h2>
-
-      <div class="certs-grid">
-        <div class="cert-card">
-          <span>01</span>
-          <strong>Altair Certified Machine Learning Professional</strong>
-          <small>Predictive Modeling</small>
-        </div>
-        <div class="cert-card">
-          <span>02</span>
-          <strong>Altair Certified Data Engineering Professional</strong>
-          <small>ETL & Data Prep</small>
-        </div>
-        <div class="cert-card">
-          <span>03</span>
-          <strong>Nebius Agentic AI Builder Associate</strong>
-          <small>Agentic Systems</small>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== 8. ACHIEVEMENTS ========== -->
-    <section class="wrap">
-      <p class="section-label">07 / Achievements & Learning</p>
-      <h2 class="section-title">Signals of<br><em>progress</em>.</h2>
-
-      <div class="achievements-list">
-        <div class="achievement">
-          <div class="achievement-num">01</div>
-          <div>
-            <strong>Built production-grade GenAI microservices</strong>
-            <p style="color:var(--muted); font-size:14px; margin-top:4px;">
-              Shipped agentic workflows and Graph RAG systems during internship at Infinite Computer Solutions.
-            </p>
+    <!-- Certifications -->
+    <section class="band">
+      <div class="wrap">
+        <p class="label">05 / Verified signal</p>
+        <div class="certs">
+          <div class="cert">
+            <span>01</span>
+            <strong>Altair Certified Machine Learning Professional</strong>
+            <small>ALTAIR / PREDICTIVE MODELING</small>
           </div>
-        </div>
-        <div class="achievement">
-          <div class="achievement-num">02</div>
-          <div>
-            <strong>Zero-downtime database migration</strong>
-            <p style="color:var(--muted); font-size:14px; margin-top:4px;">
-              Designed and executed DB2 to Couchbase migration pipeline at inMorphis.
-            </p>
+          <div class="cert">
+            <span>02</span>
+            <strong>Altair Certified Data Engineering Professional</strong>
+            <small>ALTAIR / ETL &amp; DATA PREP</small>
           </div>
-        </div>
-        <div class="achievement">
-          <div class="achievement-num">03</div>
-          <div>
-            <strong>Continuous learning in Agentic AI & RAG</strong>
-            <p style="color:var(--muted); font-size:14px; margin-top:4px;">
-              Actively exploring advanced RAG patterns, multi-agent systems and production LLM applications.
-            </p>
+          <div class="cert">
+            <span>03</span>
+            <strong>Nebius Agentic AI Builder Associate</strong>
+            <small>NEBIUS / AGENTIC SYSTEMS</small>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== 9. CONTACT ========== -->
+    <!-- Contact -->
     <section class="contact wrap" id="contact">
-      <p class="section-label">08 / Contact</p>
-      <h2>Let’s build something<br>worth shipping.</h2>
-      <p>Open to full-time roles, internships, freelance work, and interesting AI/ML problems.</p>
-      <div class="contact-actions">
-        <a href="mailto:adityakumarmaharana187@gmail.com" class="btn btn-primary">Email Me</a>
-        <a href="https://github.com/adityakumarmaharana" target="_blank" class="btn btn-outline">GitHub</a>
-        <a href="https://www.linkedin.com/in/adityaku1818/" target="_blank" class="btn btn-outline">LinkedIn</a>
-        <a href="mailto:adityakumarmaharana187@gmail.com?subject=Resume%20request" class="btn btn-outline">Resume</a>
+      <p class="label">06 / Open channel</p>
+      <h2>Have a hard signal<br>to <em>untangle?</em></h2>
+      <p>Let's talk about data, intelligent systems, or the next problem worth solving.</p>
+      <div class="actions">
+        <a class="cta" href="mailto:adityakumarmaharana187@gmail.com">Email Aditya ↗</a>
+        <a class="under" href="https://www.linkedin.com/in/adityaku1818/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a class="under" href="https://github.com/adityakumarmaharana" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="dark">
     <div class="wrap">
       <div class="footer-row">
-        <span>● Open to opportunity</span>
-        <span>© 2026 Aditya Kumar Maharana</span>
-        <div class="footer-social">
-          <a href="https://www.linkedin.com/in/adityaku1818/" target="_blank">LinkedIn</a>
-          <a href="https://github.com/adityakumarmaharana" target="_blank">GitHub</a>
-        </div>
+        <span>● OPEN TO OPPORTUNITY</span>
+        <span>© 2026 ADITYA KUMAR MAHARANA</span>
+        <span class="social">
+          <a href="https://www.linkedin.com/in/adityaku1818/" target="_blank" rel="noreferrer">LINKEDIN</a>
+          <a href="https://github.com/adityakumarmaharana" target="_blank" rel="noreferrer">GITHUB</a>
+        </span>
       </div>
       <div class="wordmark">ADITYA</div>
     </div>
   </footer>
+
+  <script>
+    const buttons = [...document.querySelectorAll("[data-filter]")];
+    const cards = [...document.querySelectorAll("[data-category]")];
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        buttons.forEach((item) => {
+          item.classList.remove("active");
+          item.setAttribute("aria-pressed", "false");
+        });
+        button.classList.add("active");
+        button.setAttribute("aria-pressed", "true");
+        const filter = button.dataset.filter;
+        cards.forEach((card) => {
+          const shouldHide = filter !== "all" && !card.dataset.category.includes(filter);
+          card.classList.toggle("hidden", shouldHide);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
