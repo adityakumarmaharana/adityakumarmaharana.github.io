@@ -452,6 +452,29 @@
       color: var(--blue);
       letter-spacing: 0.1em;
     }
+    /* Education specific */
+    .edu-role {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 28px;
+      padding: 42px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .edu-content h3 {
+      font: 500 28px "Bodoni Moda";
+      margin: 0 0 6px;
+    }
+    .edu-content h4 {
+      font: 500 15px "IBM Plex Mono";
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    .edu-meta {
+      font: 12px "IBM Plex Mono";
+      color: var(--blue);
+      letter-spacing: 0.05em;
+    }
     .skills {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -555,6 +578,9 @@
       .year {
         font-size: 42px;
       }
+      .edu-role {
+        grid-template-columns: 80px 1fr;
+      }
     }
     @media (max-width: 800px) {
       header {
@@ -588,6 +614,10 @@
         grid-template-columns: 1fr;
       }
       .role {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .edu-role {
         grid-template-columns: 1fr;
         gap: 14px;
       }
@@ -658,6 +688,7 @@
     <nav class="links">
       <a href="#projects" data-testid="site-nav-link-projects">Work</a>
       <a href="#experience" data-testid="site-nav-link-experience">Experience</a>
+      <a href="#education" data-testid="site-nav-link-education">Education</a>
       <a href="#skills" data-testid="site-nav-link-skills">Stack</a>
       <a href="#contact" data-testid="site-nav-link-contact">Contact</a>
     </nav>
@@ -702,13 +733,11 @@
         </div>
       </div>
       <div class="signal">
-        <!-- Profile Picture -->
         <div class="profile-wrap">
           <img src="profile.png" 
                alt="Aditya Kumar Maharana" 
                class="profile-pic">
         </div>
-
         <div class="signal-head">
           <span>LIVE / PERSONAL SIGNAL</span>
           <span>19.09°N / 83.22°E</span>
@@ -848,7 +877,7 @@
       </div>
     </section>
 
-    <!-- Experience Section with Logos -->
+    <!-- Experience -->
     <section class="band" id="experience">
       <div class="wrap">
         <div class="heading">
@@ -859,8 +888,6 @@
           </h2>
         </div>
         <div class="timeline">
-
-          <!-- 1. Infinite Computer Solutions -->
           <article class="role">
             <img src="infinite_computer_solutions_logo.jpg" 
                  alt="Infinite Computer Solutions" 
@@ -881,7 +908,6 @@
             </div>
           </article>
 
-          <!-- 2. inMorphis -->
           <article class="role">
             <img src="inmorphis_logo.jpg" 
                  alt="inMorphis" 
@@ -902,7 +928,6 @@
             </div>
           </article>
 
-          <!-- 3. Zoho -->
           <article class="role">
             <img src="zoho_logo.jpg" 
                  alt="Zoho Corporation" 
@@ -922,14 +947,36 @@
               <p class="stack">NLP / ZIA AI / AGILE</p>
             </div>
           </article>
-
         </div>
+      </div>
+    </section>
+
+    <!-- ==================== EDUCATION SECTION ==================== -->
+    <section class="wrap" id="education">
+      <div class="heading">
+        <p class="label">03 / Academic foundation</p>
+        <h2>
+          Where the signal<br>
+          <em>was trained.</em>
+        </h2>
+      </div>
+      <div class="timeline">
+        <article class="edu-role">
+          <img src="giet_university_logo.png" 
+               alt="GIET University" 
+               class="role-logo">
+          <div class="edu-content">
+            <h3>Bachelor of Technology – BTech</h3>
+            <h4>Computer Science & Engineering (Artificial Intelligence & Machine Learning)</h4>
+            <p class="edu-meta">GIET University, Gunupur &nbsp;·&nbsp; Aug 2023 – Jun 2027</p>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="wrap" id="skills">
       <div class="heading">
-        <p class="label">03 / Instruments</p>
+        <p class="label">04 / Instruments</p>
         <h2>
           A practical<br>
           <em>stack of curiosity.</em>
@@ -968,7 +1015,7 @@
     </section>
     <section class="band">
       <div class="wrap">
-        <p class="label">04 / Verified signal</p>
+        <p class="label">05 / Verified signal</p>
         <div class="certs">
           <div class="cert">
             <span>01</span>
@@ -995,7 +1042,7 @@
       </div>
     </section>
     <section class="contact wrap" id="contact">
-      <p class="label">05 / Open channel</p>
+      <p class="label">06 / Open channel</p>
       <h2>
         Have a hard signal<br>
         to <em>untangle?</em>
