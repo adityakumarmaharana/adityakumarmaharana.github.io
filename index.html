@@ -172,6 +172,20 @@
       background: var(--white);
       border: 1px solid var(--line);
       padding: 24px;
+      position: relative;
+    }
+    .profile-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--lime);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
     .signal-head,
     .signal-foot {
@@ -185,7 +199,7 @@
       max-width: 100%;
     }
     .chart {
-      margin: 45px 0 20px;
+      margin: 25px 0 20px;
     }
     .chart path {
       fill: none;
@@ -598,6 +612,10 @@
         gap: 20px;
         flex-wrap: wrap;
       }
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
     }
     @media (max-width: 480px) {
       section {
@@ -684,6 +702,13 @@
         </div>
       </div>
       <div class="signal">
+        <!-- Profile Picture -->
+        <div class="profile-wrap">
+          <img src="profile.png" 
+               alt="Aditya Kumar Maharana" 
+               class="profile-pic">
+        </div>
+
         <div class="signal-head">
           <span>LIVE / PERSONAL SIGNAL</span>
           <span>19.09°N / 83.22°E</span>
@@ -823,7 +848,7 @@
       </div>
     </section>
 
-    <!-- ==================== EXPERIENCE SECTION WITH LOGOS ==================== -->
+    <!-- Experience Section with Logos -->
     <section class="band" id="experience">
       <div class="wrap">
         <div class="heading">
