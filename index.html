@@ -452,7 +452,6 @@
       color: var(--blue);
       letter-spacing: 0.1em;
     }
-    /* Education specific */
     .edu-role {
       display: grid;
       grid-template-columns: 100px 1fr;
@@ -532,7 +531,6 @@
     .contact h2 {
       font: 500 clamp(50px, 7vw, 100px) / 0.95 "Bodoni Moda";
       letter-spacing: -0.07em;
-      margin: 0 0 24px;
     }
     .contact p {
       color: var(--muted);
@@ -682,28 +680,24 @@
 </head>
 <body>
   <header id="site-header">
-    <a class="brand" href="#top" data-testid="site-nav-link-home">
+    <a class="brand" href="#top">
       <b></b>ADITYA <i>/</i> SYSTEMS
     </a>
     <nav class="links">
-      <a href="#projects" data-testid="site-nav-link-projects">Work</a>
-      <a href="#experience" data-testid="site-nav-link-experience">Experience</a>
-      <a href="#education" data-testid="site-nav-link-education">Education</a>
-      <a href="#skills" data-testid="site-nav-link-skills">Stack</a>
-      <a href="#contact" data-testid="site-nav-link-contact">Contact</a>
+      <a href="#projects">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Stack</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a class="resume"
-       href="mailto:adityakumarmaharana187@gmail.com?subject=Resume%20request"
-       data-testid="resume-button">
+    <a class="resume" href="mailto:adityakumarmaharana187@gmail.com?subject=Resume%20request">
       Resume ↗
     </a>
-    <button class="menu"
-            aria-label="Open menu"
-            data-testid="mobile-menu-button">
-      ☰
-    </button>
+    <button class="menu" aria-label="Open menu">☰</button>
   </header>
+
   <main id="top">
+    <!-- Hero -->
     <section class="hero wrap" id="hero">
       <div>
         <p class="label">
@@ -720,36 +714,19 @@
           information, intelligent systems, and measurable outcomes meet.
         </p>
         <div class="actions">
-          <a class="cta"
-             href="#projects"
-             data-testid="hero-projects-button">
-            Explore the work ↗
-          </a>
-          <a class="under"
-             href="mailto:adityakumarmaharana187@gmail.com"
-             data-testid="hero-email-button">
-            Start a conversation ↗
-          </a>
+          <a class="cta" href="#projects">Explore the work ↗</a>
+          <a class="under" href="mailto:adityakumarmaharana187@gmail.com">Start a conversation ↗</a>
         </div>
       </div>
       <div class="signal">
         <div class="profile-wrap">
-          <img src="profile.png" 
-               alt="Aditya Kumar Maharana" 
-               class="profile-pic">
+          <img src="profile.png" alt="Aditya Kumar Maharana" class="profile-pic">
         </div>
         <div class="signal-head">
           <span>LIVE / PERSONAL SIGNAL</span>
           <span>19.09°N / 83.22°E</span>
         </div>
-        <svg class="chart"
-             viewBox="0 0 520 180"
-             role="img"
-             aria-labelledby="chart-title chart-desc">
-          <title id="chart-title">Aditya's systems thinking signal</title>
-          <desc id="chart-desc">
-            A rising analytical signal line.
-          </desc>
+        <svg class="chart" viewBox="0 0 520 180" role="img">
           <path d="M0 140 C50 135 60 110 105 120 S160 100 200 110 S250 70 290 90 S350 54 390 70 S450 28 520 34"></path>
           <path class="accent" d="M0 153 C50 150 65 128 108 140 S165 118 205 127 S260 94 300 108 S350 82 396 91 S458 58 520 62"></path>
         </svg>
@@ -769,50 +746,30 @@
         </div>
       </div>
     </section>
+
     <div class="ticker">
       <span>
         DATA → SYSTEMS → INSIGHT → IMPACT →
         DATA → SYSTEMS → INSIGHT → IMPACT →
       </span>
     </div>
+
+    <!-- Projects -->
     <section class="wrap" id="projects">
       <div class="heading">
         <p class="label">01 / Selected work</p>
-        <h2>
-          Useful things,<br>
-          <em>carefully built.</em>
-        </h2>
-        <p class="note">
-          Not a collection of demos. A record of questions turned into
-          working systems.
-        </p>
+        <h2>Useful things,<br><em>carefully built.</em></h2>
+        <p class="note">Not a collection of demos. A record of questions turned into working systems.</p>
       </div>
       <div class="filters" id="project-filter">
         <span>FILTER /</span>
-        <button class="active"
-                data-filter="all"
-                aria-pressed="true"
-                data-testid="project-filter-all-button">
-          ALL
-        </button>
-        <button data-filter="ai"
-                aria-pressed="false"
-                data-testid="project-filter-ai-button">
-          AI
-        </button>
-        <button data-filter="ml"
-                aria-pressed="false"
-                data-testid="project-filter-ml-button">
-          ML
-        </button>
+        <button class="active" data-filter="all">ALL</button>
+        <button data-filter="ai">AI</button>
+        <button data-filter="ml">ML</button>
       </div>
       <div class="projects">
-        <article class="project"
-                 data-category="ai data"
-                 data-testid="project-card-deploytual">
-          <div class="project-top">
-            01 / AI + DATA SYSTEMS
-          </div>
+        <article class="project" data-category="ai data">
+          <div class="project-top">01 / AI + DATA SYSTEMS</div>
           <div class="visual">
             <div class="nodes">
               <span class="node">QUERY</span>
@@ -824,10 +781,7 @@
           <div class="project-body">
             <p class="label">From question to insight.</p>
             <h3>Deploytual</h3>
-            <p>
-              AI-powered analytics that turns natural-language questions
-              into SQL, ETL, ML workflows, and executive-ready reporting.
-            </p>
+            <p>AI-powered analytics that turns natural-language questions into SQL, ETL, ML workflows, and executive-ready reporting.</p>
             <div class="outcome">
               <strong>60%</strong>
               <small>less manual reporting</small>
@@ -840,29 +794,17 @@
             </div>
           </div>
         </article>
-        <article class="project"
-                 data-category="ml data"
-                 data-testid="project-card-workforceiq">
-          <div class="project-top">
-            02 / ML + PEOPLE INTELLIGENCE
-          </div>
+        <article class="project" data-category="ml data">
+          <div class="project-top">02 / ML + PEOPLE INTELLIGENCE</div>
           <div class="visual">
             <div class="bars">
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i>
             </div>
           </div>
           <div class="project-body">
             <p class="label">The workforce, decoded.</p>
             <h3>WorkforceIQ</h3>
-            <p>
-              Predictive attrition, employee segmentation, and sentiment
-              intelligence across 50K+ employee records and 10K+ transcripts.
-            </p>
+            <p>Predictive attrition, employee segmentation, and sentiment intelligence across 50K+ employee records and 10K+ transcripts.</p>
             <div class="outcome">
               <strong>85%+</strong>
               <small>attrition model accuracy</small>
@@ -882,16 +824,11 @@
       <div class="wrap">
         <div class="heading">
           <p class="label">02 / Field notes</p>
-          <h2>
-            Experience that<br>
-            <em>moves the signal.</em>
-          </h2>
+          <h2>Experience that<br><em>moves the signal.</em></h2>
         </div>
         <div class="timeline">
           <article class="role">
-            <img src="infinite_computer_solutions_logo.jpg" 
-                 alt="Infinite Computer Solutions" 
-                 class="role-logo">
+            <img src="infinite_computer_solutions_logo.jpg" alt="Infinite Computer Solutions" class="role-logo">
             <div>
               <div class="year">2026</div>
               <p class="label" style="margin-top:10px;">Apr — Jun / Bengaluru</p>
@@ -909,9 +846,7 @@
           </article>
 
           <article class="role">
-            <img src="inmorphis_logo.jpg" 
-                 alt="inMorphis" 
-                 class="role-logo">
+            <img src="inmorphis_logo.jpg" alt="inMorphis" class="role-logo">
             <div>
               <div class="year">2025</div>
               <p class="label" style="margin-top:10px;">Jun — Jul / Noida</p>
@@ -929,9 +864,7 @@
           </article>
 
           <article class="role">
-            <img src="zoho_logo.jpg" 
-                 alt="Zoho Corporation" 
-                 class="role-logo">
+            <img src="zoho_logo.jpg" alt="Zoho Corporation" class="role-logo">
             <div>
               <div class="year">2024</div>
               <p class="label" style="margin-top:10px;">Jun — Jul / Chennai</p>
@@ -951,7 +884,7 @@
       </div>
     </section>
 
-    <!-- ==================== EDUCATION SECTION ==================== -->
+    <!-- Education -->
     <section class="wrap" id="education">
       <div class="heading">
         <p class="label">03 / Academic foundation</p>
@@ -963,138 +896,100 @@
       <div class="timeline">
         <article class="edu-role">
           <img src="giet_university_logo.png" 
-               alt="GIET University" 
+               alt="Gandhi Institute of Engineering and Technology University" 
                class="role-logo">
           <div class="edu-content">
             <h3>Bachelor of Technology – BTech</h3>
             <h4>Computer Science & Engineering (Artificial Intelligence & Machine Learning)</h4>
-            <p class="edu-meta">GIET University, Gunupur &nbsp;·&nbsp; Aug 2023 – Jun 2027</p>
+            <p class="edu-meta">
+              Gandhi Institute of Engineering and Technology University, Gunupur &nbsp;·&nbsp; Aug 2023 – Jun 2027
+            </p>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- Skills -->
     <section class="wrap" id="skills">
       <div class="heading">
         <p class="label">04 / Instruments</p>
-        <h2>
-          A practical<br>
-          <em>stack of curiosity.</em>
-        </h2>
+        <h2>A practical<br><em>stack of curiosity.</em></h2>
       </div>
       <div class="skills">
         <div class="skill">
           <b>01</b>
           <h3>DATA</h3>
-          <p>
-            Python · SQL · PostgreSQL · Cypher · N1QL · Pandas · NumPy · EDA
-          </p>
+          <p>Python · SQL · PostgreSQL · Cypher · N1QL · Pandas · NumPy · EDA</p>
         </div>
         <div class="skill">
           <b>02</b>
           <h3>MACHINE INTELLIGENCE</h3>
-          <p>
-            Classification · Forecasting · Random Forest · K-Means · NLP · VADER
-          </p>
+          <p>Classification · Forecasting · Random Forest · K-Means · NLP · VADER</p>
         </div>
         <div class="skill">
           <b>03</b>
           <h3>VISUAL LANGUAGE</h3>
-          <p>
-            Tableau · Plotly · Statistical Analysis · Automated Reporting
-          </p>
+          <p>Tableau · Plotly · Statistical Analysis · Automated Reporting</p>
         </div>
         <div class="skill">
           <b>04</b>
           <h3>SYSTEMS</h3>
-          <p>
-            FastAPI · Docker · Git · CI/CD · ETL · Agile / Scrum
-          </p>
+          <p>FastAPI · Docker · Git · CI/CD · ETL · Agile / Scrum</p>
         </div>
       </div>
     </section>
+
+    <!-- Certifications -->
     <section class="band">
       <div class="wrap">
         <p class="label">05 / Verified signal</p>
         <div class="certs">
           <div class="cert">
             <span>01</span>
-            <strong>
-              Altair Certified Machine Learning Professional
-            </strong>
+            <strong>Altair Certified Machine Learning Professional</strong>
             <small>ALTAIR / PREDICTIVE MODELING</small>
           </div>
           <div class="cert">
             <span>02</span>
-            <strong>
-              Altair Certified Data Engineering Professional
-            </strong>
+            <strong>Altair Certified Data Engineering Professional</strong>
             <small>ALTAIR / ETL &amp; DATA PREP</small>
           </div>
           <div class="cert">
             <span>03</span>
-            <strong>
-              Nebius Agentic AI Builder Associate
-            </strong>
+            <strong>Nebius Agentic AI Builder Associate</strong>
             <small>NEBIUS / AGENTIC SYSTEMS</small>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Contact -->
     <section class="contact wrap" id="contact">
       <p class="label">06 / Open channel</p>
-      <h2>
-        Have a hard signal<br>
-        to <em>untangle?</em>
-      </h2>
-      <p>
-        Let's talk about data, intelligent systems, or the next problem
-        worth solving.
-      </p>
+      <h2>Have a hard signal<br>to <em>untangle?</em></h2>
+      <p>Let's talk about data, intelligent systems, or the next problem worth solving.</p>
       <div class="actions">
-        <a class="cta"
-           href="mailto:adityakumarmaharana187@gmail.com"
-           data-testid="contact-email-button">
-          Email Aditya ↗
-        </a>
-        <a class="under"
-           href="https://www.linkedin.com/in/adityaku1818/"
-           target="_blank"
-           rel="noreferrer"
-           data-testid="social-link-linkedin">
-          LinkedIn ↗
-        </a>
-        <a class="under"
-           href="https://github.com/adityakumarmaharana"
-           target="_blank"
-           rel="noreferrer"
-           data-testid="social-link-github">
-          GitHub ↗
-        </a>
+        <a class="cta" href="mailto:adityakumarmaharana187@gmail.com">Email Aditya ↗</a>
+        <a class="under" href="https://www.linkedin.com/in/adityaku1818/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a class="under" href="https://github.com/adityakumarmaharana" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </section>
   </main>
+
   <footer class="dark">
     <div class="wrap">
       <div class="footer-row">
         <span>● OPEN TO OPPORTUNITY</span>
         <span>© 2026 ADITYA KUMAR MAHARANA</span>
         <span class="social">
-          <a href="https://www.linkedin.com/in/adityaku1818/"
-             target="_blank"
-             rel="noreferrer">
-            LINKEDIN
-          </a>
-          <a href="https://github.com/adityakumarmaharana"
-             target="_blank"
-             rel="noreferrer">
-            GITHUB
-          </a>
+          <a href="https://www.linkedin.com/in/adityaku1818/" target="_blank" rel="noreferrer">LINKEDIN</a>
+          <a href="https://github.com/adityakumarmaharana" target="_blank" rel="noreferrer">GITHUB</a>
         </span>
       </div>
       <div class="wordmark">ADITYA</div>
     </div>
   </footer>
+
   <script>
     const buttons = [...document.querySelectorAll("[data-filter]")];
     const cards = [...document.querySelectorAll("[data-category]")];
@@ -1108,9 +1003,7 @@
         button.setAttribute("aria-pressed", "true");
         const filter = button.dataset.filter;
         cards.forEach((card) => {
-          const shouldHide =
-            filter !== "all" &&
-            !card.dataset.category.includes(filter);
+          const shouldHide = filter !== "all" && !card.dataset.category.includes(filter);
           card.classList.toggle("hidden", shouldHide);
         });
       });
