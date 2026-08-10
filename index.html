@@ -351,6 +351,17 @@
       font: 12px "IBM Plex Mono";
       color: var(--blue);
     }
+    .project-image {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid var(--line);
+    }
+    .project-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
     .project-body {
       padding: 36px 28px 32px;
     }
@@ -529,7 +540,6 @@
       margin-top: 65px;
       white-space: nowrap;
     }
-    .hidden { display: none !important; }
 
     @media (max-width: 900px) {
       .role { grid-template-columns: 80px 1fr; gap: 20px; }
@@ -655,12 +665,21 @@
 
       <div class="projects-vertical">
 
-        <!-- PROJECT 1: DEPLOYTUAL -->
+        <!-- PROJECT 1: DEPLOYTUAL (with homepage screenshot) -->
         <article class="project-card">
           <div class="project-header">
             <div class="project-cat">01 / AI ANALYTICS PLATFORM</div>
             <div class="project-date">Jun 2026 – Present</div>
           </div>
+
+          <!-- Deploytual Homepage Screenshot -->
+          <div class="project-image">
+            <img 
+              src="deploytual-homepage.png" 
+              alt="Deploytual — Query any dataset with AI. Instantly."
+            >
+          </div>
+
           <div class="project-body">
             <h3>Deploytual</h3>
             <p class="project-tagline">Deploy intelligence. Any data. Anywhere.</p>
